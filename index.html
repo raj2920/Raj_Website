@@ -3,52 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raj Aryan | GATE CSE 2026</title>
+<title>Bittu Kumar | Software Engineer</title>
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f172a;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     text-align: center;
+    padding: 80px 20px;
 }
-header {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    
+header h1 {
+    font-size: 42px;
+    margin: 0;
 }
-h1 { margin: 10px 0; font-size: 40px; }
-p { font-size: 18px; }
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
 
 .section {
-    padding: 50px 20px;
+    padding: 60px 10%;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c5364;
 }
 
 .card {
-    background: #1e293b;
-    margin: 20px auto;
+    background: white;
     padding: 25px;
     border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
 
-button {
-    background: #2563eb;
-    border: none;
-    padding: 10px 20px;
+.skills span {
+    display: inline-block;
+    background: #2c5364;
     color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #1d4ed8;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
 footer {
+    background: #0f2027;
+    color: white;
+    text-align: center;
     padding: 20px;
-    background: #111827;
-    font-size: 14px;
+}
+a {
+    color: #2c5364;
+    text-decoration: none;
 }
 </style>
 </head>
@@ -56,57 +73,83 @@ footer {
 <body>
 
 <header>
-    <h1>Raj Aryan</h1>
-    <p>GATE CSE 2026 Aspirant | Computer Science Enthusiast</p>
-    <button onclick="scrollToNotes()">Explore My Notes</button>
+    <h1>Bittu Kumar (Raj)</h1>
+    <p>B.Tech CSE 2024 | GATE Qualified (Score 370) | Aspiring Software Engineer</p>
 </header>
 
 <section class="section">
     <h2>About Me</h2>
-    <p>
-        I am preparing for GATE CSE 2026 and creating structured, exam-focused 
-        notes to help students crack GATE efficiently.
-    </p>
-</section>
-
-<section class="section" id="notes">
-    <h2>Premium GATE Notes</h2>
-
     <div class="card">
-        <h3>DBMS Short Notes</h3>
-        <p>Concept clarity + PYQs + Revision Sheets</p>
-        <p><strong>Price: ₹49</strong></p>
-        <button onclick="buyNow()">Buy Now</button>
+        <p>
+        Computer Science graduate with strong foundation in Data Structures, 
+        Algorithms, DBMS, Operating Systems and Networking. GATE qualified 
+        with a score of 370. Passionate about building efficient software 
+        solutions and exploring cloud & AI technologies.
+        </p>
     </div>
-
-    <div class="card">
-        <h3>Probability for GATE</h3>
-        <p>Formulas + Tricks + Solved Examples</p>
-        <p><strong>Price: ₹49</strong></p>
-        <button onclick="buyNow()">Buy Now</button>
-    </div>
-
 </section>
 
 <section class="section">
-    <h2>Contact Me</h2>
-    <p>Email: yourmail@gmail.com</p>
-    <p>Telegram: @yourusername</p>
+    <h2>Technical Skills</h2>
+    <div class="card skills">
+        <span>C</span>
+        <span>C++</span>
+        <span>Data Structures</span>
+        <span>Algorithms</span>
+        <span>DBMS</span>
+        <span>Operating Systems</span>
+        <span>Computer Networks</span>
+        <span>Machine Learning</span>
+        <span>AWS Cloud</span>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Projects</h2>
+    <div class="card">
+        <h3>WhatsApp Chat Analysis</h3>
+        <p>
+        Developed a data analysis tool using Python (Pandas, Matplotlib, Seaborn) 
+        to analyze WhatsApp chat data and generate meaningful insights with 
+        sentiment analysis. Integrated results into a Flutter-based interface.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Internship</h2>
+    <div class="card">
+        <h3>AWS Cloud Virtual Internship</h3>
+        <p>
+        Completed AICTE & AWS supported cloud internship program focusing on 
+        cloud technologies and industry-ready skill development.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Certifications</h2>
+    <div class="card">
+        <p>• AWS Cloud – AICTE</p>
+        <p>• Cisco CCNAv7: Introduction to Networks</p>
+        <p>• Juniper Networks – Eduskills</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Contact</h2>
+    <div class="card">
+        <p><strong>Email:</strong> bittuk292021@gmail.com</p>
+        <p><strong>Phone:</strong> 9608520740</p>
+        <p><strong>LinkedIn:</strong> 
+        <a href="https://www.linkedin.com/in/raj-64757121a" target="_blank">
+        linkedin.com/in/raj-64757121a</a></p>
+    </div>
 </section>
 
 <footer>
-    © 2026 Raj Aryan | All Rights Reserved
+    © 2026 Bittu Kumar | All Rights Reserved
 </footer>
-
-<script>
-function scrollToNotes() {
-    document.getElementById("notes").scrollIntoView({behavior: "smooth"});
-}
-
-function buyNow() {
-    alert("Payment system coming soon! Contact on Telegram for now.");
-}
-</script>
 
 </body>
 </html>
