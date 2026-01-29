@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raj Aryan | GATE CSE 2026</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+header {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+h1 { margin: 10px 0; font-size: 40px; }
+p { font-size: 18px; }
+
+.section {
+    padding: 50px 20px;
+}
+
+.card {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+}
+
+button {
+    background: #2563eb;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+footer {
+    padding: 20px;
+    background: #111827;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Raj Aryan</h1>
+    <p>GATE CSE 2026 Aspirant | Computer Science Enthusiast</p>
+    <button onclick="scrollToNotes()">Explore My Notes</button>
+</header>
+
+<section class="section">
+    <h2>About Me</h2>
+    <p>
+        I am preparing for GATE CSE 2026 and creating structured, exam-focused 
+        notes to help students crack GATE efficiently.
+    </p>
+</section>
+
+<section class="section" id="notes">
+    <h2>Premium GATE Notes</h2>
+
+    <div class="card">
+        <h3>DBMS Short Notes</h3>
+        <p>Concept clarity + PYQs + Revision Sheets</p>
+        <p><strong>Price: ₹49</strong></p>
+        <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="card">
+        <h3>Probability for GATE</h3>
+        <p>Formulas + Tricks + Solved Examples</p>
+        <p><strong>Price: ₹49</strong></p>
+        <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+</section>
+
+<section class="section">
+    <h2>Contact Me</h2>
+    <p>Email: yourmail@gmail.com</p>
+    <p>Telegram: @yourusername</p>
+</section>
+
+<footer>
+    © 2026 Raj Aryan | All Rights Reserved
+</footer>
+
+<script>
+function scrollToNotes() {
+    document.getElementById("notes").scrollIntoView({behavior: "smooth"});
+}
+
+function buyNow() {
+    alert("Payment system coming soon! Contact on Telegram for now.");
+}
+</script>
+
+</body>
+</html>
