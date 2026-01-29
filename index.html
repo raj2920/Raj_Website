@@ -7,10 +7,51 @@
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    .hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.hero-content span {
+    color: #00d4ff;
+}
+
+.hero-content h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn {
+    padding: 12px 28px;
+    background: #00d4ff;
+    color: black;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+}
 }
 
 body {
@@ -51,6 +92,17 @@ nav ul li {
     padding: 80px 10%;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
+    <section class="hero">
+    <div class="hero-content">
+        <h1>Hi, I'm <span>Bittu Kumar</span></h1>
+        <h3>GATE Qualified (370) | Software Engineer</h3>
+        <p>
+            Computer Science graduate passionate about building scalable
+            software systems and exploring Cloud & AI technologies.
+        </p>
+        <a href="#about" class="btn">Explore More ↓</a>
+    </div>
+</section>
 }
 
 .hero-text {
