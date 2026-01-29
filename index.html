@@ -4,146 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bittu Kumar | Software Engineer</title>
+
 <style>
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f9;
+}
+
+body {
+    background: #f8f9fb;
     color: #333;
 }
 
-header {
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav h2 {
+    color: #0f2027;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 10%;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
-    text-align: center;
-    padding: 80px 20px;
 }
-    
-header h1 {
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text h1 {
     font-size: 42px;
-    margin: 0;
+    margin-bottom: 20px;
 }
 
-header p {
+.hero-text span {
+    color: #00d4ff;
+}
+
+.hero-text p {
     font-size: 18px;
-    margin-top: 10px;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #00d4ff;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+}
+
+.hero-image {
+    width: 350px;
+    height: 350px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c5364;
+    font-weight: bold;
+}
+
+/* SECTION */
 .section {
-    padding: 60px 10%;
+    padding: 80px 10%;
 }
 
 .section h2 {
-    text-align: center;
     margin-bottom: 30px;
+    text-align: center;
     color: #2c5364;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-.skills span {
-    display: inline-block;
-    background: #2c5364;
-    color: white;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
+/* FOOTER */
 footer {
+    text-align: center;
+    padding: 25px;
     background: #0f2027;
     color: white;
-    text-align: center;
-    padding: 20px;
-}
-a {
-    color: #2c5364;
-    text-decoration: none;
+    margin-top: 40px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Bittu Kumar (Raj)</h1>
-    <p>B.Tech CSE 2024 | GATE Qualified | Aspiring Software Engineer</p>
-</header>
+<nav>
+    <h2>Bittu Kumar</h2>
+    <ul>
+        <li>About</li>
+        <li>Skills</li>
+        <li>Projects</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Hi, I'm <span>Bittu Kumar (Raj)</span></h1>
+        <p>
+        B.Tech CSE 2024 | GATE Qualified  <br>
+        Aspiring Software Engineer passionate about building 
+        efficient software solutions and exploring Cloud & AI technologies.
+        </p>
+        <a href="#contact" class="btn">Let's Connect</a>
+    </div>
+
+    <div class="hero-image">
+        Your Photo Here
+    </div>
+</section>
 
 <section class="section">
     <h2>About Me</h2>
     <div class="card">
-        <p>
-        Computer Science graduate with strong foundation in Data Structures, 
-        Algorithms, DBMS, Operating Systems and Networking. GATE qualified 
-         . Passionate about building efficient software 
-        solutions and exploring cloud & AI technologies.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Technical Skills</h2>
-    <div class="card skills">
-        <span>C</span>
-        <span>C++</span>
-        <span>Data Structures</span>
-        <span>Algorithms</span>
-        <span>DBMS</span>
-        <span>Operating Systems</span>
-        <span>Computer Networks</span>
-        <span>Machine Learning</span>
-        <span>AWS Cloud</span>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Projects</h2>
-    <div class="card">
-        <h3>WhatsApp Chat Analysis</h3>
-        <p>
-        Developed a data analysis tool using Python (Pandas, Matplotlib, Seaborn) 
-        to analyze WhatsApp chat data and generate meaningful insights with 
-        sentiment analysis. Integrated results into a Flutter-based interface.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Internship</h2>
-    <div class="card">
-        <h3>AWS Cloud Virtual Internship</h3>
-        <p>
-        Completed AICTE & AWS supported cloud internship program focusing on 
-        cloud technologies and industry-ready skill development.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Certifications</h2>
-    <div class="card">
-        <p>• AWS Cloud – AICTE</p>
-        <p>• Cisco CCNAv7: Introduction to Networks</p>
-        <p>• Juniper Networks – Eduskills</p>
+        Computer Science graduate with strong foundation in 
+        Data Structures, Algorithms, DBMS, Operating Systems 
+        and Networking. Seeking opportunities to contribute 
+        to impactful software development projects.
     </div>
 </section>
 
 <section class="section">
     <h2>Contact</h2>
-    <div class="card">
+    <div class="card" id="contact">
         <p><strong>Email:</strong> bittuk292021@gmail.com</p>
         <p><strong>Phone:</strong> 9608520740</p>
-        <p><strong>LinkedIn:</strong> 
-        <a href="https://www.linkedin.com/in/raj-64757121a" target="_blank">
-        linkedin.com/in/raj-64757121a</a></p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/raj-64757121a</p>
     </div>
 </section>
 
