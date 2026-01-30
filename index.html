@@ -27,15 +27,6 @@
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
-            perspective: 1000px;
-        }
-
-        /* 3D Container */
-        .scene {
-            position: relative;
-            transform-style: preserve-3d;
-            min-height: 100vh;
-            transition: transform 0.5s ease;
         }
 
         /* Particles Background */
@@ -146,6 +137,8 @@
             margin-bottom: 2rem;
             color: var(--gray);
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight {
@@ -171,6 +164,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-primary {
@@ -190,14 +185,13 @@
             box-shadow: 0 10px 20px rgba(108, 99, 255, 0.6);
         }
 
-        /* 3D Photo Container */
+        /* 3D Photo Container - FIXED */
         .photo-container {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            transform-style: preserve-3d;
         }
 
         .photo-frame {
@@ -206,7 +200,6 @@
             border-radius: 20px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             position: relative;
-            transform-style: preserve-3d;
             animation: float 6s ease-in-out infinite;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             overflow: hidden;
@@ -251,9 +244,24 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
+        /* Fallback for missing photo */
+        .initials-placeholder {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--primary);
+            background: rgba(42, 45, 62, 0.9);
+            border-radius: 12px;
+            z-index: 2;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
-            50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         @keyframes rotate {
@@ -301,11 +309,12 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(108, 99, 255, 0.2);
             backdrop-filter: blur(10px);
-            transform-style: preserve-3d;
+            position: relative;
+            z-index: 1;
         }
 
         .card:hover {
-            transform: translateY(-10px) rotateX(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(108, 99, 255, 0.3);
             border-color: var(--primary);
         }
@@ -320,6 +329,8 @@
         .table-container {
             overflow-x: auto;
             margin-top: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         table {
@@ -388,6 +399,8 @@
             padding: 1.5rem;
             border-radius: 10px;
             border: 1px solid rgba(108, 99, 255, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .timeline-content h4 {
@@ -408,6 +421,8 @@
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .skill-tag {
@@ -441,6 +456,8 @@
             border-radius: 10px;
             border: 1px solid rgba(108, 99, 255, 0.2);
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-item:hover {
@@ -460,6 +477,8 @@
             background: rgba(42, 45, 62, 0.9);
             border-top: 1px solid rgba(108, 99, 255, 0.2);
             margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Responsive */
@@ -522,6 +541,16 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -529,239 +558,238 @@
     <!-- Particles Background -->
     <div id="particles-js"></div>
     
-    <div class="scene" id="scene">
-        <!-- Header -->
-        <header>
-            <div class="logo">Bittu<span>Kumar</span></div>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+    <!-- Header -->
+    <header>
+        <div class="logo">Bittu<span>Kumar</span></div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Bittu Kumar</span></h1>
+            <p>A passionate <span class="highlight">Computer Science Engineer</span> specializing in software development, cloud technologies, and machine learning. Recently graduated with B.Tech from Galgotias University and qualified <span class="highlight">GATE 2025</span>.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
             </div>
-            <nav class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
+        </div>
+        <div class="photo-container">
+            <div class="photo-frame">
+                <!-- Photo will be loaded here by JavaScript -->
+                <div id="photo-placeholder"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Career Objective</h3>
+                <p>To obtain a challenging software development position that utilizes my programming skills and knowledge to design, develop, and implement innovative software solutions.</p>
+                <p>Seeking a software engineer role in a reputable organization where I can apply my technical skills to contribute to the development of cutting-edge software products.</p>
+            </div>
+            <div class="card">
+                <h3>Personal Details</h3>
+                <p><strong>Location:</strong> New Delhi, India</p>
+                <p><strong>Email:</strong> bittuk292021@gmail.com</p>
+                <p><strong>Mobile:</strong> 9608520740</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rq-64757121a?" target="_blank" style="color: var(--accent);">linkedin.com/in/rq-64757121a</a></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Specialization</th>
+                        <th>Institute/College</th>
+                        <th>Board/University</th>
+                        <th>Score</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>UG</td>
+                        <td>Computer Science</td>
+                        <td>Galgotias University</td>
+                        <td>Galgotias University</td>
+                        <td>71.6%</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>Class XII</td>
+                        <td>Science</td>
+                        <td>K J +2 High School Amba Kala</td>
+                        <td>Bihar School Examination Board (BSEB)</td>
+                        <td>78.2%</td>
+                        <td>2019</td>
+                    </tr>
+                    <tr>
+                        <td>Class X</td>
+                        <td>-</td>
+                        <td>K J +2 High School Amba Kala</td>
+                        <td>Bihar School Examination Board (BSEB)</td>
+                        <td>70%</td>
+                        <td>2017</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Hi, I'm <span>Bittu Kumar</span></h1>
-                <p>A passionate <span class="highlight">Computer Science Engineer</span> specializing in software development, cloud technologies, and machine learning. Recently graduated with B.Tech from Galgotias University and qualified <span class="highlight">GATE 2025</span>.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
-                </div>
-            </div>
-            <div class="photo-container">
-                <div class="photo-frame">
-                    <img src="your-photo.jpg" alt="Bittu Kumar" class="my-photo" id="profilePhoto">
-                </div>
-            </div>
-        </section>
+        <h2 class="section-title" style="margin-top: 5rem;">Subjects / Electives</h2>
+        <div class="skills-container">
+            <div class="skill-tag">Software Engineering</div>
+            <div class="skill-tag">Machine Learning</div>
+            <div class="skill-tag">Artificial Intelligence</div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-tag">C & C++ Programming</div>
+            <div class="skill-tag">Data Structures</div>
+            <div class="skill-tag">Algorithms</div>
+            <div class="skill-tag">Operating Systems</div>
+            <div class="skill-tag">Compilers</div>
+            <div class="skill-tag">DBMS</div>
+            <div class="skill-tag">Computer Networking</div>
+            <div class="skill-tag">AWS Cloud</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Flutter</div>
+            <div class="skill-tag">Machine Learning</div>
+            <div class="skill-tag">Sentiment Analysis</div>
+        </div>
         
-        <!-- About Section -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Career Objective</h3>
-                    <p>To obtain a challenging software development position that utilizes my programming skills and knowledge to design, develop, and implement innovative software solutions.</p>
-                    <p>Seeking a software engineer role in a reputable organization where I can apply my technical skills to contribute to the development of cutting-edge software products.</p>
-                </div>
-                <div class="card">
-                    <h3>Personal Details</h3>
-                    <p><strong>Location:</strong> New Delhi, India</p>
-                    <p><strong>Email:</strong> bittuk292021@gmail.com</p>
-                    <p><strong>Mobile:</strong> 9608520740</p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rq-64757121a?" target="_blank" style="color: var(--accent);">linkedin.com/in/rq-64757121a</a></p>
+        <h2 class="section-title" style="margin-top: 5rem;">Certifications</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>AWS Cloud</h3>
+                <p><strong>Certifying Authority:</strong> AICTE</p>
+                <p>Virtual Internship program on cloud Technology supported by Amazon Web Services (AWS)</p>
+            </div>
+            <div class="card">
+                <h3>Introduction to Networks</h3>
+                <p><strong>Certifying Authority:</strong> Cisco</p>
+                <p>CCNAv7: Introduction to Networks course completion with student level credential</p>
+            </div>
+            <div class="card">
+                <h3>Juniper Networks Networking</h3>
+                <p><strong>Certifying Authority:</strong> AICTE (Eduskills)</p>
+                <p>Networking certification through AICTE's Eduskills program</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects & Experience Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects & Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>WhatsApp Chat Analysis - Social Media</h4>
+                    <span class="date">Dec 2022 - Jun 2024</span>
+                    <p>A tool for in-depth analysis of WhatsApp chat data using Python modules like pandas, matplotlib, seaborn and sentiment analysis. The analyzed data is displayed in a Flutter application.</p>
+                    <p><strong>Keywords:</strong> WhatsApp chat data, Pandas, Seaborn, matplotlib, sentiment analyzer, Flutter application</p>
                 </div>
             </div>
-        </section>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>AWS Cloud Virtual Internship</h4>
+                    <span class="date">Jul 2022 - Sep 2022</span>
+                    <p>AICTE & Ministry of Housing and Urban Affairs virtual internship program on cloud technology, supported by Amazon Web Services (AWS). Aimed at creating an industry-ready workforce in emerging technologies.</p>
+                </div>
+            </div>
+        </div>
         
-        <!-- Education Section -->
-        <section id="education">
-            <h2 class="section-title">Education</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Course</th>
-                            <th>Specialization</th>
-                            <th>Institute/College</th>
-                            <th>Board/University</th>
-                            <th>Score</th>
-                            <th>Year</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>UG</td>
-                            <td>Computer Science</td>
-                            <td>Galgotias University</td>
-                            <td>Galgotias University</td>
-                            <td>71.6%</td>
-                            <td>2024</td>
-                        </tr>
-                        <tr>
-                            <td>Class XII</td>
-                            <td>Science</td>
-                            <td>K J +2 High School Amba Kala</td>
-                            <td>Bihar School Examination Board (BSEB)</td>
-                            <td>78.2%</td>
-                            <td>2019</td>
-                        </tr>
-                        <tr>
-                            <td>Class X</td>
-                            <td>-</td>
-                            <td>K J +2 High School Amba Kala</td>
-                            <td>Bihar School Examination Board (BSEB)</td>
-                            <td>70%</td>
-                            <td>2017</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <h2 class="section-title" style="margin-top: 5rem;">Achievements</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>GATE 2025 Qualified</h3>
+                <p>Qualified Graduate Aptitude Test in Engineering (GATE) in Computer Science & Engineering</p>
+            </div>
+            <div class="card">
+                <h3>Bihar STET 2025 Qualified</h3>
+                <p>Qualified Bihar Secondary Teacher Eligibility Test (STET)</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <div>
+                    <h4>Email</h4>
+                    <p>bittuk292021@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 9608520740</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <div>
+                    <h4>Location</h4>
+                    <p>New Delhi, India</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin contact-icon"></i>
+                <div>
+                    <h4>LinkedIn</h4>
+                    <p>linkedin.com/in/rq-64757121a</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <h3>Languages Known</h3>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                <div class="skill-tag">English</div>
+                <div class="skill-tag">Hindi</div>
             </div>
             
-            <h2 class="section-title" style="margin-top: 5rem;">Subjects / Electives</h2>
-            <div class="skills-container">
-                <div class="skill-tag">Software Engineering</div>
-                <div class="skill-tag">Machine Learning</div>
-                <div class="skill-tag">Artificial Intelligence</div>
+            <h3 style="margin-top: 2rem;">Hobbies</h3>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                <div class="skill-tag">Playing Chess</div>
+                <div class="skill-tag">Cricket</div>
+                <div class="skill-tag">Badminton</div>
             </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-tag">C & C++ Programming</div>
-                <div class="skill-tag">Data Structures</div>
-                <div class="skill-tag">Algorithms</div>
-                <div class="skill-tag">Operating Systems</div>
-                <div class="skill-tag">Compilers</div>
-                <div class="skill-tag">DBMS</div>
-                <div class="skill-tag">Computer Networking</div>
-                <div class="skill-tag">AWS Cloud</div>
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">Flutter</div>
-                <div class="skill-tag">Machine Learning</div>
-                <div class="skill-tag">Sentiment Analysis</div>
-            </div>
-            
-            <h2 class="section-title" style="margin-top: 5rem;">Certifications</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>AWS Cloud</h3>
-                    <p><strong>Certifying Authority:</strong> AICTE</p>
-                    <p>Virtual Internship program on cloud Technology supported by Amazon Web Services (AWS)</p>
-                </div>
-                <div class="card">
-                    <h3>Introduction to Networks</h3>
-                    <p><strong>Certifying Authority:</strong> Cisco</p>
-                    <p>CCNAv7: Introduction to Networks course completion with student level credential</p>
-                </div>
-                <div class="card">
-                    <h3>Juniper Networks Networking</h3>
-                    <p><strong>Certifying Authority:</strong> AICTE (Eduskills)</p>
-                    <p>Networking certification through AICTE's Eduskills program</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Projects & Experience Section -->
-        <section id="projects">
-            <h2 class="section-title">Projects & Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>WhatsApp Chat Analysis - Social Media</h4>
-                        <span class="date">Dec 2022 - Jun 2024</span>
-                        <p>A tool for in-depth analysis of WhatsApp chat data using Python modules like pandas, matplotlib, seaborn and sentiment analysis. The analyzed data is displayed in a Flutter application.</p>
-                        <p><strong>Keywords:</strong> WhatsApp chat data, Pandas, Seaborn, matplotlib, sentiment analyzer, Flutter application</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>AWS Cloud Virtual Internship</h4>
-                        <span class="date">Jul 2022 - Sep 2022</span>
-                        <p>AICTE & Ministry of Housing and Urban Affairs virtual internship program on cloud technology, supported by Amazon Web Services (AWS). Aimed at creating an industry-ready workforce in emerging technologies.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <h2 class="section-title" style="margin-top: 5rem;">Achievements</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>GATE 2025 Qualified</h3>
-                    <p>Qualified Graduate Aptitude Test in Engineering (GATE) in Computer Science & Engineering</p>
-                </div>
-                <div class="card">
-                    <h3>Bihar STET 2025 Qualified</h3>
-                    <p>Qualified Bihar Secondary Teacher Eligibility Test (STET)</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope contact-icon"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>bittuk292021@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone contact-icon"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+91 9608520740</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt contact-icon"></i>
-                    <div>
-                        <h4>Location</h4>
-                        <p>New Delhi, India</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin contact-icon"></i>
-                    <div>
-                        <h4>LinkedIn</h4>
-                        <p>linkedin.com/in/rq-64757121a</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <h3>Languages Known</h3>
-                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
-                    <div class="skill-tag">English</div>
-                    <div class="skill-tag">Hindi</div>
-                </div>
-                
-                <h3 style="margin-top: 2rem;">Hobbies</h3>
-                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-                    <div class="skill-tag">Playing Chess</div>
-                    <div class="skill-tag">Cricket</div>
-                    <div class="skill-tag">Badminton</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 Bittu Kumar. All Rights Reserved.</p>
-            <p style="margin-top: 0.5rem; color: var(--gray);">Portfolio Website | Computer Science Engineer</p>
-        </footer>
-    </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bittu Kumar. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; color: var(--gray);">Portfolio Website | Computer Science Engineer</p>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -781,57 +809,64 @@
             });
         });
         
-        // Auto-detect and set photo
-        window.addEventListener('load', function() {
-            const profilePhoto = document.getElementById('profilePhoto');
+        // Photo Loading Function - FIXED
+        function loadProfilePhoto() {
+            const photoPlaceholder = document.getElementById('photo-placeholder');
+            const photoContainer = document.querySelector('.photo-frame');
+            
+            // Try multiple possible photo names
             const photoNames = [
                 'your-photo.jpg',
                 'your-photo.jpeg',
                 'your-photo.png',
+                'photo.jpg',
+                'photo.jpeg',
+                'photo.png',
                 'profile.jpg',
                 'profile.jpeg',
                 'profile.png',
                 'bittu.jpg',
                 'bittu.jpeg',
-                'bittu.png'
+                'bittu.png',
+                'BITTU.jpg',
+                'BITTU.jpeg',
+                'BITTU.png'
             ];
             
-            // Function to check if image exists
-            function imageExists(url, callback) {
+            let photoFound = false;
+            
+            // Try each photo name
+            for (let photoName of photoNames) {
                 const img = new Image();
-                img.onload = function() { callback(true); };
-                img.onerror = function() { callback(false); };
-                img.src = url;
-            }
-            
-            // Try each possible photo name
-            for (let i = 0; i < photoNames.length; i++) {
-                imageExists(photoNames[i], function(exists) {
-                    if (exists && profilePhoto.src.indexOf(photoNames[i]) === -1 && profilePhoto.src.indexOf('your-photo.jpg') !== -1) {
-                        profilePhoto.src = photoNames[i];
+                img.src = photoName;
+                img.onload = function() {
+                    if (!photoFound) {
+                        photoFound = true;
+                        photoPlaceholder.innerHTML = '';
+                        const photoElement = document.createElement('img');
+                        photoElement.src = photoName;
+                        photoElement.alt = 'Bittu Kumar';
+                        photoElement.className = 'my-photo';
+                        photoPlaceholder.appendChild(photoElement);
+                        console.log('Photo loaded:', photoName);
                     }
-                });
+                };
+                img.onerror = function() {
+                    // Photo not found, continue to next
+                };
             }
             
-            // If no photo found, use placeholder with initials
+            // If no photo found after checking all names, show initials
             setTimeout(() => {
-                if (profilePhoto.naturalWidth === 0) {
-                    profilePhoto.style.display = 'none';
-                    const photoFrame = document.querySelector('.photo-frame');
-                    const initials = document.createElement('div');
-                    initials.className = 'initials-placeholder';
-                    initials.innerHTML = 'BK';
-                    initials.style.cssText = `
-                        width: 100%; height: 100%; display: flex; 
-                        align-items: center; justify-content: center; 
-                        font-size: 5rem; font-weight: bold; 
-                        color: var(--primary); background: rgba(42, 45, 62, 0.9);
-                        border-radius: 12px; z-index: 2;
-                    `;
-                    photoFrame.appendChild(initials);
+                if (!photoFound && !photoPlaceholder.querySelector('.my-photo')) {
+                    photoPlaceholder.innerHTML = '<div class="initials-placeholder">BK</div>';
+                    console.log('No photo found, showing initials');
                 }
             }, 1000);
-        });
+        }
+        
+        // Load photo when page loads
+        window.addEventListener('load', loadProfilePhoto);
         
         // Initialize particles.js
         particlesJS("particles-js", {
@@ -839,18 +874,18 @@
                 number: { value: 80, density: { enable: true, value_area: 800 } },
                 color: { value: "#6c63ff" },
                 shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
+                opacity: { value: 0.3, random: true },
                 size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
                     color: "#4a44c6",
-                    opacity: 0.4,
+                    opacity: 0.2,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 2,
+                    speed: 1.5,
                     direction: "none",
                     random: true,
                     straight: false,
@@ -886,22 +921,15 @@
             });
         });
         
-        // 3D scroll effect
-        window.addEventListener('scroll', function() {
-            const scene = document.getElementById('scene');
-            const scrollY = window.scrollY;
-            const rotation = scrollY * 0.05;
-            
-            scene.style.transform = `rotateX(${rotation}deg)`;
-        });
-        
-        // Parallax effect for photo
-        window.addEventListener('mousemove', function(e) {
+        // Simple mouse move effect for photo frame (optional, less intrusive)
+        document.addEventListener('mousemove', (e) => {
             const photoFrame = document.querySelector('.photo-frame');
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            if (!photoFrame) return;
             
-            photoFrame.style.transform = `translateY(-20px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+            
+            photoFrame.style.transform = `translateY(-20px) rotateY(${x}deg) rotateX(${y}deg)`;
         });
     </script>
 </body>
