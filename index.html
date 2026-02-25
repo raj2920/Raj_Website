@@ -16,6 +16,25 @@
             background: #0a0a1a;
             color: white;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fixed 3D Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* All content goes above canvas */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
         }
 
         /* Navigation */
@@ -28,7 +47,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(10, 10, 26, 0.9);
+            background: rgba(10, 10, 26, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(74, 110, 255, 0.3);
         }
@@ -48,35 +67,30 @@
             color: white;
             text-decoration: none;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
             color: #4a6eff;
         }
 
-        /* Hero Section with 3D background */
+        /* Hero Section */
         .hero {
-            height: 100vh;
-            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 5%;
             margin-top: 0;
-        }
-
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            position: relative;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
             max-width: 800px;
+            background: rgba(10, 10, 26, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 110, 255, 0.3);
         }
 
         .hero h1 {
@@ -160,7 +174,6 @@
             margin: 0 auto;
             padding: 4rem 2rem;
             position: relative;
-            z-index: 10;
         }
 
         .section-title {
@@ -201,6 +214,7 @@
         .edu-card:hover {
             transform: translateY(-5px);
             border-color: #4a6eff;
+            box-shadow: 0 10px 30px rgba(74, 110, 255, 0.2);
         }
 
         .edu-card h3 {
@@ -257,6 +271,12 @@
             border-radius: 20px;
             padding: 0.5rem 1.2rem;
             font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: #4a6eff;
+            transform: scale(1.05);
         }
 
         /* Projects */
@@ -279,6 +299,7 @@
         .project-card:hover {
             transform: translateY(-5px);
             border-color: #ffaa44;
+            box-shadow: 0 10px 30px rgba(255, 170, 68, 0.2);
         }
 
         .project-title {
@@ -300,10 +321,16 @@
             align-items: center;
             gap: 0.5rem;
             word-break: break-all;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 170, 68, 0.1);
+            border-radius: 20px;
+            transition: 0.3s;
         }
 
         .project-link:hover {
-            text-decoration: underline;
+            background: #ffaa44;
+            color: #0a0a1a;
+            text-decoration: none;
         }
 
         /* Certifications */
@@ -321,6 +348,12 @@
             border-radius: 10px;
             padding: 1.5rem;
             text-align: center;
+            transition: 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: #4a6eff;
+            transform: translateY(-3px);
         }
 
         .cert-card h4 {
@@ -333,6 +366,26 @@
             font-size: 0.9rem;
         }
 
+        /* Internship Card */
+        .internship-card {
+            background: rgba(20, 20, 40, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(74, 110, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .internship-card:hover {
+            border-color: #ffaa44;
+        }
+
+        .internship-card h3 {
+            color: #88aaff;
+            margin-bottom: 1rem;
+        }
+
         /* Contact Section */
         .contact-section {
             background: rgba(20, 20, 40, 0.7);
@@ -341,6 +394,12 @@
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
+            transition: 0.3s;
+        }
+
+        .contact-section:hover {
+            border-color: #ffaa44;
+            box-shadow: 0 10px 30px rgba(74, 110, 255, 0.2);
         }
 
         .social-links {
@@ -362,12 +421,14 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            backdrop-filter: blur(5px);
         }
 
         .social-link:hover {
             background: #4a6eff;
             border-color: #4a6eff;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 110, 255, 0.4);
         }
 
         .github:hover {
@@ -386,11 +447,27 @@
             color: rgba(255,255,255,0.7);
         }
 
+        .hobby-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .hobby-item:hover {
+            border-color: #ffaa44;
+            transform: scale(1.05);
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             margin-top: 2rem;
+            background: rgba(10, 10, 26, 0.5);
+            backdrop-filter: blur(5px);
         }
 
         @media (max-width: 768px) {
@@ -400,6 +477,10 @@
             
             .hero .subtitle {
                 font-size: 1.2rem;
+            }
+            
+            .hero-content {
+                padding: 1.5rem;
             }
             
             .nav-links {
@@ -417,190 +498,201 @@
             .contact-section {
                 padding: 2rem 1rem;
             }
+            
+            .hobbies {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">BKR</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    <!-- Fixed 3D Canvas Background (moves on all pages) -->
+    <canvas id="bg-canvas"></canvas>
 
-    <!-- Hero Section with 3D Canvas -->
-    <section id="home" class="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="hero-content">
-            <h1>Bittu Kumar Raj</h1>
-            <div class="subtitle">Software Developer | AI/ML Enthusiast</div>
-            <div class="hero-badges">
-                <span class="badge gold">🏆 GATE 2025 Qualified (CS)</span>
-                <span class="badge gold">📚 Bihar STET 2025 Qualified</span>
-                <span class="badge">AWS Certified</span>
-                <span class="badge">CCNA Certified</span>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">BKR</div>
+            <div class="nav-links">
+                <a onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth'})">Home</a>
+                <a onclick="document.getElementById('education').scrollIntoView({behavior: 'smooth'})">Education</a>
+                <a onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth'})">Skills</a>
+                <a onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Projects</a>
+                <a onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</a>
             </div>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Education Section -->
-    <div class="container" id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="edu-grid">
-            <div class="edu-card">
-                <h3>B.Tech Computer Science</h3>
-                <div class="institute">Galgotias University</div>
-                <div class="score">71.6%</div>
-                <div class="year">2024</div>
-            </div>
-            <div class="edu-card">
-                <h3>Class XII (Science)</h3>
-                <div class="institute">KJ +2 High School, Amba Kala</div>
-                <div class="score">78.2%</div>
-                <div class="year">2019</div>
-            </div>
-            <div class="edu-card">
-                <h3>Class X</h3>
-                <div class="institute">KJ +2 High School, Amba Kala</div>
-                <div class="score">70%</div>
-                <div class="year">2017</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skills Section -->
-    <div class="container" id="skills">
-        <h2 class="section-title">Technical Proficiency</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Programming Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Python</span>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Bittu Kumar Raj</h1>
+                <div class="subtitle">Software Developer | AI/ML Enthusiast</div>
+                <div class="hero-badges">
+                    <span class="badge gold">🏆 GATE 2025 Qualified (CS)</span>
+                    <span class="badge gold">📚 Bihar STET 2025 Qualified</span>
+                    <span class="badge">AWS Certified</span>
+                    <span class="badge">CCNA Certified</span>
+                </div>
+                <div class="cta-buttons">
+                    <a onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})" class="btn btn-primary">View Projects</a>
+                    <a onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3>Core CS</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Data Structures</span>
-                    <span class="skill-tag">Algorithms</span>
-                    <span class="skill-tag">Operating Systems</span>
-                    <span class="skill-tag">DBMS</span>
-                    <span class="skill-tag">Computer Networks</span>
-                    <span class="skill-tag">Compilers</span>
+        </section>
+
+        <!-- Education Section -->
+        <div class="container" id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h3>B.Tech Computer Science</h3>
+                    <div class="institute">Galgotias University</div>
+                    <div class="score">71.6%</div>
+                    <div class="year">2024</div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <h3>Specializations</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Software Engineering</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Artificial Intelligence</span>
-                    <span class="skill-tag">AWS Cloud</span>
-                    <span class="skill-tag">Networking</span>
+                <div class="edu-card">
+                    <h3>Class XII (Science)</h3>
+                    <div class="institute">KJ +2 High School, Amba Kala</div>
+                    <div class="score">78.2%</div>
+                    <div class="year">2019</div>
+                </div>
+                <div class="edu-card">
+                    <h3>Class X</h3>
+                    <div class="institute">KJ +2 High School, Amba Kala</div>
+                    <div class="score">70%</div>
+                    <div class="year">2017</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Projects Section -->
-    <div class="container" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-title">📱 WhatsApp Chat Analyzer</div>
-                <div class="project-desc">
-                    ML-Powered Relationship & Sentiment Intelligence Platform that analyzes WhatsApp chats to predict love interest, friendship compatibility, sentiment trends, and conversation dynamics with 94% accuracy.
+        <!-- Skills Section -->
+        <div class="container" id="skills">
+            <h2 class="section-title">Technical Proficiency</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
                 </div>
-                <a href="https://huggingface.co/spaces/alex292021/whatsapp-chat-Analyzer" target="_blank" class="project-link">
-                    🔗 Live Demo
-                </a>
-            </div>
-            <div class="project-card">
-                <div class="project-title">🎯 GATE Rank Predictor</div>
-                <div class="project-desc">
-                    Web application using previous years' official data to estimate expected rank and score. Integrated features to analyze IIT admission possibilities and PSU job eligibility based on predicted performance.
+                <div class="skill-category">
+                    <h3>Core CS</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Operating Systems</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">Computer Networks</span>
+                        <span class="skill-tag">Compilers</span>
+                    </div>
                 </div>
-                <a href="https://rai2920.github.io/Gate-Rank-Predictor/" target="_blank" class="project-link">
-                    🔗 Live Demo
-                </a>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">AWS Cloud</span>
+                        <span class="skill-tag">Networking</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Certifications Section -->
-    <div class="container">
-        <h2 class="section-title">Certifications & Experience</h2>
-        <div class="certs-grid">
-            <div class="cert-card">
-                <h4>AWS Cloud</h4>
-                <p>AICTE</p>
-            </div>
-            <div class="cert-card">
-                <h4>CCNAv7: Introduction to Networks</h4>
-                <p>Cisco</p>
-            </div>
-            <div class="cert-card">
-                <h4>Juniper Networks</h4>
-                <p>AICTE</p>
+        <!-- Projects Section -->
+        <div class="container" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">📱 WhatsApp Chat Analyzer</div>
+                    <div class="project-desc">
+                        ML-Powered Relationship & Sentiment Intelligence Platform that analyzes WhatsApp chats to predict love interest, friendship compatibility, sentiment trends, and conversation dynamics with 94% accuracy.
+                    </div>
+                    <a href="https://huggingface.co/spaces/alex292021/whatsapp-chat-Analyzer" target="_blank" class="project-link">
+                        🔗 Live Demo
+                    </a>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">🎯 GATE Rank Predictor</div>
+                    <div class="project-desc">
+                        Web application using previous years' official data to estimate expected rank and score. Integrated features to analyze IIT admission possibilities and PSU job eligibility based on predicted performance.
+                    </div>
+                    <a href="https://raj2920.github.io/Gate-Rank-Predictor/" target="_blank" class="project-link">
+                        🔗 Live Demo
+                    </a>
+                </div>
             </div>
         </div>
-        
-        <!-- Internship -->
-        <div style="background: rgba(20,20,40,0.7); backdrop-filter: blur(10px); border-radius: 15px; padding: 2rem; margin-top: 2rem; border: 1px solid rgba(74,110,255,0.3);">
-            <h3 style="color: #88aaff; margin-bottom: 1rem;">AWS Cloud Virtual Internship</h3>
-            <p style="color: rgba(255,255,255,0.8);">AICTE & Ministry of Housing and Urban Affairs in collaboration with Eduskills</p>
-        </div>
-    </div>
 
-    <!-- Contact Section -->
-    <div class="container" id="contact">
-        <div class="contact-section">
-            <h2 style="font-size: 2rem; margin-bottom: 2rem;">Let's Connect</h2>
+        <!-- Certifications Section -->
+        <div class="container">
+            <h2 class="section-title">Certifications & Experience</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h4>AWS Cloud</h4>
+                    <p>AICTE</p>
+                </div>
+                <div class="cert-card">
+                    <h4>CCNAv7: Introduction to Networks</h4>
+                    <p>Cisco</p>
+                </div>
+                <div class="cert-card">
+                    <h4>Juniper Networks</h4>
+                    <p>AICTE</p>
+                </div>
+            </div>
             
-            <div class="social-links">
-                <a href="https://github.com/raj2920" target="_blank" class="social-link github">
-                    <span>🐙</span> GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/bittu-kumar-raj-64757121a" target="_blank" class="social-link linkedin">
-                    <span>🔗</span> LinkedIn
-                </a>
-                <a href="#" class="social-link">
-                    <span>📁</span> Portfolio
-                </a>
-                <a href="mailto:your.email@example.com" class="social-link">
-                    <span>📧</span> Email
-                </a>
-            </div>
-
-            <div style="margin: 2rem 0;">
-                <p style="font-size: 1.2rem; color: #88aaff;">Languages: English, Hindi</p>
-            </div>
-
-            <div class="hobbies">
-                <span>♟️ Chess</span>
-                <span>🏏 Cricket</span>
-                <span>🏸 Badminton</span>
+            <!-- Internship -->
+            <div class="internship-card">
+                <h3>AWS Cloud Virtual Internship</h3>
+                <p style="color: rgba(255,255,255,0.8);">AICTE & Ministry of Housing and Urban Affairs in collaboration with Eduskills</p>
             </div>
         </div>
+
+        <!-- Contact Section -->
+        <div class="container" id="contact">
+            <div class="contact-section">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem;">Let's Connect</h2>
+                
+                <div class="social-links">
+                    <a href="https://github.com/raj2920" target="_blank" class="social-link github">
+                        <span>🐙</span> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/bittu-kumar-raj-64757121a" target="_blank" class="social-link linkedin">
+                        <span>🔗</span> LinkedIn
+                    </a>
+                    <a href="#" class="social-link">
+                        <span>📁</span> Portfolio
+                    </a>
+                    <a href="mailto:your.email@example.com" class="social-link">
+                        <span>📧</span> Email
+                    </a>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <p style="font-size: 1.2rem; color: #88aaff;">Languages: English, Hindi</p>
+                </div>
+
+                <div class="hobbies">
+                    <span class="hobby-item">♟️ Chess</span>
+                    <span class="hobby-item">🏏 Cricket</span>
+                    <span class="hobby-item">🏸 Badminton</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Bittu Kumar Raj. All rights reserved.</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>© 2025 Bittu Kumar Raj. All rights reserved.</p>
-    </footer>
-
-    <!-- 3D Animation Script -->
+    <!-- 3D Animation Script (Fixed Background) -->
     <script type="importmap">
         {
             "imports": {
@@ -612,13 +704,13 @@
     <script type="module">
         import * as THREE from 'three';
 
-        // Setup
-        const canvas = document.getElementById('hero-canvas');
+        // Setup - Canvas is now fixed background
+        const canvas = document.getElementById('bg-canvas');
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x0a0a1a);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 2, 8);
+        camera.position.set(0, 2, 12);
 
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -640,87 +732,133 @@
         pointLight2.position.set(2, 1, -3);
         scene.add(pointLight2);
 
-        // Create central object (neural network inspired)
-        const group = new THREE.Group();
-
-        // Core
-        const coreGeo = new THREE.IcosahedronGeometry(1.2, 2);
-        const coreMat = new THREE.MeshStandardMaterial({ 
+        // Create floating geometric shapes
+        const shapes = [];
+        
+        // Central sphere
+        const sphereGeo = new THREE.IcosahedronGeometry(1.5, 2);
+        const sphereMat = new THREE.MeshStandardMaterial({ 
             color: 0x4a6eff,
             emissive: 0x112244,
-            wireframe: true
-        });
-        const core = new THREE.Mesh(coreGeo, coreMat);
-        group.add(core);
-
-        // Inner sphere
-        const innerGeo = new THREE.SphereGeometry(0.8, 32, 32);
-        const innerMat = new THREE.MeshStandardMaterial({ 
-            color: 0x88aaff,
-            emissive: 0x112244,
+            wireframe: true,
             transparent: true,
-            opacity: 0.2,
-            wireframe: true
+            opacity: 0.8
         });
-        const inner = new THREE.Mesh(innerGeo, innerMat);
-        group.add(inner);
+        const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+        sphere.position.set(0, 1, 0);
+        scene.add(sphere);
+        shapes.push(sphere);
 
-        // Floating orbs
-        for (let i = 0; i < 16; i++) {
-            const angle = (i / 16) * Math.PI * 2;
-            const radius = 2.5;
-            const y = Math.sin(angle * 4) * 1.5;
-            
-            const orbGeo = new THREE.SphereGeometry(0.1, 8, 8);
-            const orbMat = new THREE.MeshStandardMaterial({ 
-                color: 0xffaa44,
-                emissive: 0x442200
+        // Floating rings
+        const ringGeo = new THREE.TorusGeometry(2.2, 0.05, 16, 100);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0x88aaff, emissive: 0x112244 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2;
+        ring.position.set(0, 1, 0);
+        scene.add(ring);
+        shapes.push(ring);
+
+        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.8, 0.03, 16, 100), 
+            new THREE.MeshStandardMaterial({ color: 0xffaa44, emissive: 0x221100 }));
+        ring2.rotation.x = 1.2;
+        ring2.rotation.y = 0.5;
+        ring2.position.set(0, 1, 0);
+        scene.add(ring2);
+        shapes.push(ring2);
+
+        // Floating cubes around
+        for (let i = 0; i < 20; i++) {
+            const size = 0.2 + Math.random() * 0.3;
+            const cubeGeo = new THREE.BoxGeometry(size, size, size);
+            const cubeMat = new THREE.MeshStandardMaterial({ 
+                color: new THREE.Color().setHSL(Math.random(), 0.8, 0.6),
+                emissive: 0x111122
             });
-            const orb = new THREE.Mesh(orbGeo, orbMat);
-            orb.position.set(
+            const cube = new THREE.Mesh(cubeGeo, cubeMat);
+            
+            const angle = (i / 20) * Math.PI * 2;
+            const radius = 4 + Math.random() * 2;
+            const height = 0.5 + Math.random() * 3;
+            
+            cube.position.set(
                 Math.cos(angle) * radius,
-                y,
+                height,
                 Math.sin(angle) * radius
             );
-            group.add(orb);
+            
+            scene.add(cube);
+            shapes.push(cube);
         }
 
-        group.position.y = 1;
-        scene.add(group);
-
-        // Particles
-        const particleCount = 1500;
+        // Particle system (MORE particles for better effect)
+        const particleCount = 3000;
         const particleGeo = new THREE.BufferGeometry();
         const particlePositions = new Float32Array(particleCount * 3);
+        const particleColors = new Float32Array(particleCount * 3);
 
         for (let i = 0; i < particleCount; i++) {
-            const r = 5 + Math.random() * 8;
+            // Random sphere distribution
+            const r = 8 + Math.random() * 10;
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos(2 * Math.random() - 1);
             
             particlePositions[i*3] = r * Math.sin(phi) * Math.cos(theta);
-            particlePositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+            particlePositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta) + 1;
             particlePositions[i*3+2] = r * Math.cos(phi);
+            
+            // Color based on position
+            const hue = 0.6 + (Math.sin(i) * 0.2);
+            const color = new THREE.Color().setHSL(hue, 0.8, 0.6);
+            particleColors[i*3] = color.r;
+            particleColors[i*3+1] = color.g;
+            particleColors[i*3+2] = color.b;
         }
 
         particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
         const particleMat = new THREE.PointsMaterial({ 
-            color: 0x88aaff,
-            size: 0.05,
+            size: 0.1,
+            vertexColors: true,
             transparent: true,
             blending: THREE.AdditiveBlending
         });
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
+        shapes.push(particles);
 
-        // Animation
+        // Animation loop - THIS MAKES EVERYTHING MOVE
+        let time = 0;
         function animate() {
             requestAnimationFrame(animate);
-
-            group.rotation.x += 0.002;
-            group.rotation.y += 0.003;
-
+            
+            time += 0.001;
+            
+            // Rotate main sphere
+            sphere.rotation.x += 0.002;
+            sphere.rotation.y += 0.003;
+            
+            // Rotate rings
+            ring.rotation.y += 0.001;
+            ring.rotation.x += 0.0005;
+            ring2.rotation.y -= 0.001;
+            ring2.rotation.z += 0.0005;
+            
+            // Animate cubes - float up and down
+            scene.children.forEach(child => {
+                if (child.geometry && child.geometry.type === 'BoxGeometry') {
+                    child.position.y += Math.sin(time + child.position.x) * 0.002;
+                }
+            });
+            
+            // Rotate entire particle system
             particles.rotation.y += 0.0002;
+            particles.rotation.x += 0.0001;
+            
+            // Slight camera movement for dynamic effect
+            camera.position.x = Math.sin(time * 0.1) * 2;
+            camera.position.z = 12 + Math.sin(time * 0.2) * 1;
+            camera.lookAt(0, 1, 0);
 
             renderer.render(scene, camera);
         }
@@ -732,6 +870,16 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Mouse move effect (subtle)
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            // Slight rotation based on mouse
+            sphere.rotation.y += mouseX * 0.0001;
+            sphere.rotation.x += mouseY * 0.0001;
         });
     </script>
 </body>
