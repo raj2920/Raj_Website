@@ -2,1257 +2,309 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BITTU KUMAR(RAJ) | 4D Quantum Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Portfolio</title>
     <style>
-        /* PERFORMANCE OPTIMIZATIONS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-
-        :root {
-            --primary: #00f3ff;
-            --secondary: #9d00ff;
-            --accent: #ff00c8;
-            --dark: #0a0a14;
-            --darker: #050510;
-            --light: #ffffff;
-            --neon-glow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
-            --grid-color: rgba(0, 243, 255, 0.1);
-        }
-
-        /* OPTIMIZED BODY */
+        
         body {
-            background: var(--darker);
-            color: var(--light);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(45deg, var(--grid-color) 1px, transparent 1px),
-                linear-gradient(-45deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-attachment: fixed;
-            will-change: transform;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* HARDWARE ACCELERATED CANVAS */
-        #quantum-canvas {
+        
+        #canvas-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: 1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 2rem;
+            max-width: 600px;
             pointer-events: none;
-            transform: translateZ(0);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
-
-        /* OPTIMIZED NAVIGATION */
-        .nav-4d {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(5, 5, 16, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            transform: translateZ(0);
-            will-change: transform;
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease;
         }
-
-        .logo-quantum {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: glitch 5s infinite;
-        }
-
-        @keyframes glitch {
-            0%, 95%, 100% { transform: translate(0); }
-            96% { transform: translate(-1px, 1px); }
-            97% { transform: translate(1px, -1px); }
-            98% { transform: translate(-1px, -1px); }
-            99% { transform: translate(1px, 1px); }
-        }
-
-        /* OPTIMIZED NAV LINKS */
-        .nav-links-4d {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link-4d {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-            padding: 0.5rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-            will-change: color;
-        }
-
-        .nav-link-4d::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s ease;
-            will-change: width;
-        }
-
-        .nav-link-4d:hover {
-            color: var(--primary);
-        }
-
-        .nav-link-4d:hover::before {
-            width: 100%;
-        }
-
-        .hamburger-4d {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-
-        /* OPTIMIZED HERO SECTION */
-        .hero-4d {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-            transform: translateZ(0);
-        }
-
-        .hero-content-4d {
-            flex: 1;
-            max-width: 700px;
-            z-index: 10;
-        }
-
-        .hero-title-4d {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(157, 0, 255, 0.3);
-            animation: titleGlow 6s infinite alternate;
-            will-change: text-shadow;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(157, 0, 255, 0.4); }
-        }
-
-        .hero-subtitle-4d {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            margin-bottom: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 300;
-        }
-
-        .typewriter {
-            border-right: 2px solid var(--primary);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary) }
-        }
-
-        .hero-description-4d {
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
+        
+        p {
+            font-size: 1.2rem;
             margin-bottom: 2rem;
-            position: relative;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--primary);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
         }
-
-        /* OPTIMIZED BUTTONS */
-        .cta-buttons-4d {
+        
+        .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+            pointer-events: auto;
         }
-
-        .btn-4d {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
+        
+        .social-links a {
+            color: white;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            will-change: transform, box-shadow;
-            transform: translateZ(0);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
         }
-
-        .btn-primary-4d {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.3);
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+            transform: translateY(-2px);
         }
-
-        .btn-secondary-4d {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2);
-        }
-
-        .btn-4d:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4);
-        }
-
-        /* OPTIMIZED PHOTO PORTAL */
-        .photo-portal-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            perspective: 1000px;
-            transform: translateZ(0);
-        }
-
-        .photo-portal {
-            width: min(350px, 90vw);
-            height: min(450px, 80vh);
-            position: relative;
-            transform-style: preserve-3d;
-            animation: portalSpin 25s linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes portalSpin {
-            0% { transform: rotateY(0deg) rotateX(5deg); }
-            100% { transform: rotateY(360deg) rotateX(5deg); }
-        }
-
-        .portal-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid;
-            border-radius: 50%;
-            animation: ringPulse 6s ease-in-out infinite;
-            will-change: transform, opacity;
-        }
-
-        .ring-1 { border-color: var(--primary); animation-delay: 0s; }
-        .ring-2 { border-color: var(--secondary); animation-delay: 2s; }
-        .ring-3 { border-color: var(--accent); animation-delay: 4s; }
-
-        @keyframes ringPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.05); opacity: 0.6; }
-        }
-
-        .photo-hologram {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 75%;
-            height: 80%;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 
-                inset 0 0 30px rgba(0, 243, 255, 0.2),
-                0 0 40px rgba(157, 0, 255, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            transform: translateZ(0);
-        }
-
-        .my-hologram-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-            filter: hue-rotate(0deg) contrast(1.05) brightness(1.05);
-            animation: hueRotate 15s infinite linear;
-            will-change: filter;
-            transform: translateZ(0);
-        }
-
-        @keyframes hueRotate {
-            0% { filter: hue-rotate(0deg) contrast(1.05) brightness(1.05); }
-            100% { filter: hue-rotate(360deg) contrast(1.05) brightness(1.05); }
-        }
-
-        /* OPTIMIZED SECTIONS */
-        .section-4d {
-            padding: 4rem 5%;
-            position: relative;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
-            transform: translateZ(0);
-        }
-
-        .section-title-4d {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title-4d::before,
-        .section-title-4d::after {
-            content: '✦';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 1.5rem;
-            animation: starPulse 3s infinite;
-            opacity: 0.5;
-        }
-
-        .section-title-4d::before {
-            left: -40px;
-        }
-
-        .section-title-4d::after {
-            right: -40px;
-        }
-
-        @keyframes starPulse {
-            0%, 100% { opacity: 0.3; transform: translateY(-50%) scale(1); }
-            50% { opacity: 0.8; transform: translateY(-50%) scale(1.2); }
-        }
-
-        /* OPTIMIZED GRID LAYOUT */
-        .grid-4d {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card-4d {
-            background: rgba(10, 10, 20, 0.7);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            will-change: transform, box-shadow;
-            transform: translateZ(0);
-        }
-
-        .card-4d::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .card-4d:hover {
-            transform: translateY(-10px);
-            box-shadow: 
-                0 15px 35px rgba(0, 243, 255, 0.2),
-                inset 0 0 20px rgba(157, 0, 255, 0.1);
-            border-color: var(--primary);
-        }
-
-        .card-title-4d {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .card-title-4d i {
-            font-size: 1.5rem;
-        }
-
-        /* OPTIMIZED TIMELINE */
-        .timeline-4d {
-            position: relative;
-            max-width: 1000px;
-            margin: 3rem auto;
-        }
-
-        .timeline-4d::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-        }
-
-        .timeline-item-4d {
-            margin-bottom: 3rem;
-            position: relative;
-            width: 45%;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s ease;
-            will-change: transform, opacity;
-        }
-
-        .timeline-item-4d.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item-4d:nth-child(odd) {
-            margin-left: 0;
-            margin-right: auto;
-            padding-right: 3rem;
-            text-align: right;
-        }
-
-        .timeline-item-4d:nth-child(even) {
-            margin-left: auto;
-            margin-right: 0;
-            padding-left: 3rem;
-            text-align: left;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            top: 20px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
-            will-change: box-shadow;
-        }
-
-        .timeline-item-4d:nth-child(odd) .timeline-dot {
-            right: -7.5px;
-        }
-
-        .timeline-item-4d:nth-child(even) .timeline-dot {
-            left: -7.5px;
-        }
-
-        /* OPTIMIZED SKILL ORBS */
-        .skills-orb-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-orb {
-            width: min(100px, 20vw);
-            height: min(100px, 20vw);
-            border-radius: 50%;
-            background: rgba(10, 10, 20, 0.8);
-            border: 1px solid var(--primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.1);
-            will-change: transform, box-shadow;
-            transform: translateZ(0);
-            padding: 10px;
-            text-align: center;
-        }
-
-        .skill-orb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
-        }
-
-        .skill-orb i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* OPTIMIZED CONTACT */
-        .contact-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .matrix-cell {
-            background: rgba(10, 10, 20, 0.7);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            transition: all 0.3s ease;
-            text-align: center;
-            will-change: transform;
-            transform: translateZ(0);
-        }
-
-        .matrix-cell:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.2);
-        }
-
-        /* OPTIMIZED FOOTER */
-        .footer-4d {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(5, 5, 16, 0.95);
-            border-top: 1px solid rgba(0, 243, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            transform: translateZ(0);
-        }
-
-        /* RESPONSIVE OPTIMIZATIONS */
-        @media (max-width: 1024px) {
-            .hero-4d {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 100px;
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .hero-content-4d {
-                margin-bottom: 3rem;
-            }
-            
-            .photo-portal {
-                width: min(300px, 80vw);
-                height: min(400px, 70vh);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-
+        
         @media (max-width: 768px) {
-            .nav-links-4d {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                flex-direction: column;
-                background: rgba(5, 5, 16, 0.98);
-                width: 100%;
-                text-align: center;
-                padding: 1.5rem 0;
-                transition: right 0.3s ease;
-                backdrop-filter: blur(20px);
-                border-top: 1px solid rgba(0, 243, 255, 0.2);
-                gap: 1rem;
-            }
-            
-            .nav-links-4d.active {
-                right: 0;
-            }
-            
-            .hamburger-4d {
-                display: block;
-            }
-            
-            .section-title-4d::before,
-            .section-title-4d::after {
-                display: none;
-            }
-            
-            .timeline-4d::before {
-                left: 20px;
-            }
-            
-            .timeline-item-4d {
-                width: 100%;
-                padding-left: 50px !important;
-                padding-right: 1rem !important;
-                text-align: left !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-item-4d:nth-child(odd) .timeline-dot,
-            .timeline-item-4d:nth-child(even) .timeline-dot {
-                left: 12.5px;
-                right: auto;
-            }
-            
-            .cta-buttons-4d {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-4d {
-                padding: 0 1rem;
-                padding-top: 90px;
-            }
-            
-            .section-4d {
-                padding: 3rem 1rem;
-            }
-            
-            .card-4d {
-                padding: 1.5rem;
-            }
-            
-            .btn-4d {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* PERFORMANCE UTILITIES */
-        .performance-optimized {
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            will-change: transform;
-        }
-
-        /* DISABLE ANIMATIONS FOR REDUCED MOTION */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .typewriter {
-                animation: none;
-                border-right: none;
-            }
+            h1 { font-size: 2.5rem; }
+            .content { padding: 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Quantum Canvas -->
-    <canvas id="quantum-canvas"></canvas>
+    <div id="canvas-container"></div>
     
-    <!-- 4D Navigation -->
-    <nav class="nav-4d">
-        <div class="logo-quantum">RAJ<span style="color: var(--accent);">::</span>RAJ</div>
-        <button class="hamburger-4d" id="hamburger" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links-4d" id="navLinks">
-            <a href="#home" class="nav-link-4d">Home</a>
-            <a href="#about" class="nav-link-4d">About</a>
-            <a href="#skills" class="nav-link-4d">Skills</a>
-            <a href="#projects" class="nav-link-4d">Projects</a>
-            <a href="#education" class="nav-link-4d">Education</a>
-            <a href="#contact" class="nav-link-4d">Contact</a>
+    <div class="content">
+        <h1>Alex Chen</h1>
+        <p>Creative Developer & 3D Artist crafting immersive digital experiences. <br>Specializing in WebGL, Three.js, and interactive design.</p>
+        <div class="social-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Behance</a>
+            <a href="#">Contact</a>
         </div>
-    </nav>
-    
-    <!-- 4D Hero Section -->
-    <section class="hero-4d performance-optimized" id="home">
-        <div class="hero-content-4d">
-            <h1 class="hero-title-4d">RAJ BITTU</h1>
-            <h2 class="hero-subtitle-4d typewriter">BITTU KUMAR</h2>
-            <p class="hero-description-4d">
-                Visionary Computer Science Engineer specializing in quantum-inspired development, 
-                AI integration, and cloud-native solutions. Transforming complex problems into 
-                elegant digital experiences through cutting-edge technology.
-            </p>
-            <div class="cta-buttons-4d">
-                <a href="#contact" class="btn-4d btn-primary-4d">
-                    <i class="fas fa-rocket"></i>Launch Connection
-                </a>
-                <a href="#projects" class="btn-4d btn-secondary-4d">
-                    <i class="fas fa-eye"></i>View Projects
-                </a>
-            </div>
-        </div>
-        <div class="photo-portal-container">
-            <div class="photo-portal">
-                <div class="portal-ring ring-1"></div>
-                <div class="portal-ring ring-2"></div>
-                <div class="portal-ring ring-3"></div>
-                <div class="photo-hologram" id="hologramContainer">
-                    <!-- Photo will be loaded here -->
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section class="section-4d performance-optimized" id="about">
-        <h2 class="section-title-4d">Quantum Profile</h2>
-        <div class="grid-4d">
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-bullseye"></i> Mission Objective</h3>
-                <p>To obtain a challenging software development position that utilizes my programming skills and knowledge to design, develop, and implement innovative software solutions.</p>
-                <p>Seeking a software engineer role in a reputable organization where I can apply my technical skills to contribute to the development of cutting-edge software products.</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-id-badge"></i> Digital Identity</h3>
-                <p><strong>Location:</strong> New Delhi, India</p>
-                <p><strong>Email:</strong> bittuk292021@gmail.com</p>
-                <p><strong>Quantum Link:</strong> +91 9608520740</p>
-                <p><strong>Network Node:</strong> linkedin.com/in/rq-64757121a</p>
-                <p><strong>Academic Status:</strong> B.Tech CSE Graduate (2024)</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section class="section-4d performance-optimized" id="skills">
-        <h2 class="section-title-4d">Quantum Skills</h2>
-        <div class="skills-orb-container">
-            <div class="skill-orb">
-                <i class="fab fa-python"></i>
-                <span>Python AI</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-cloud"></i>
-                <span>AWS Cloud</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-brain"></i>
-                <span>Machine Learning</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-database"></i>
-                <span>DBMS</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-network-wired"></i>
-                <span>Networking</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-mobile-alt"></i>
-                <span>Flutter</span>
-            </div>
-        </div>
-        
-        <h2 class="section-title-4d" style="margin-top: 4rem;">Certifications</h2>
-        <div class="grid-4d">
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fab fa-aws"></i> AWS Cloud</h3>
-                <p><strong>Authority:</strong> AICTE</p>
-                <p>Virtual Internship program on cloud Technology supported by Amazon Web Services (AWS)</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-network-wired"></i> CCNAv7</h3>
-                <p><strong>Authority:</strong> Cisco</p>
-                <p>Introduction to Networks course completion with student level credential</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-server"></i> Juniper Networks</h3>
-                <p><strong>Authority:</strong> AICTE (Eduskills)</p>
-                <p>Networking certification through AICTE's Eduskills program</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section class="section-4d performance-optimized" id="projects">
-        <h2 class="section-title-4d">Quantum Projects</h2>
-        <div class="timeline-4d">
-            <div class="timeline-item-4d">
-                <div class="timeline-dot"></div>
-                <div class="card-4d">
-                    <h3 class="card-title-4d"><i class="fab fa-whatsapp"></i> WhatsApp Chat Analysis</h3>
-                    <p class="date">Dec 2022 - Jun 2024</p>
-                    <p>A quantum analysis tool for WhatsApp chat data using Python modules (pandas, matplotlib, seaborn) with sentiment analysis. Features include data visualization and Flutter application integration.</p>
-                    <p><strong>Tech Stack:</strong> Python, Pandas, Matplotlib, Seaborn, Flutter, Sentiment Analysis</p>
-                </div>
-            </div>
-            <div class="timeline-item-4d">
-                <div class="timeline-dot"></div>
-                <div class="card-4d">
-                    <h3 class="card-title-4d"><i class="fas fa-cloud"></i> AWS Cloud Virtual Internship</h3>
-                    <p class="date">Jul 2022 - Sep 2022</p>
-                    <p>AICTE & Ministry of Housing and Urban Affairs virtual internship program on cloud technology, supported by Amazon Web Services (AWS). Focused on creating industry-ready workforce in emerging technologies.</p>
-                </div>
-            </div>
-        </div>
-        
-        <h2 class="section-title-4d" style="margin-top: 4rem;">Quantum Achievements</h2>
-        <div class="grid-4d">
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-graduation-cap"></i> GATE 2025 Qualified</h3>
-                <p>Graduate Aptitude Test in Engineering (GATE) in Computer Science & Engineering</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-chalkboard-teacher"></i> Bihar STET 2025</h3>
-                <p>Secondary Teacher Eligibility Test (STET) qualified</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Education Section -->
-    <section class="section-4d performance-optimized" id="education">
-        <h2 class="section-title-4d">Quantum Education</h2>
-        <div class="grid-4d">
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-university"></i> B.Tech CSE</h3>
-                <p><strong>Institute:</strong> Galgotias University</p>
-                <p><strong>Score:</strong> 71.6%</p>
-                <p><strong>Year:</strong> 2024</p>
-                <p><strong>Specialization:</strong> Computer Science & Engineering</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-school"></i> Class XII (Science)</h3>
-                <p><strong>School:</strong> K J +2 High School Amba Kala</p>
-                <p><strong>Board:</strong> Bihar School Examination Board (BSEB)</p>
-                <p><strong>Score:</strong> 78.2%</p>
-                <p><strong>Year:</strong> 2019</p>
-            </div>
-            <div class="card-4d">
-                <h3 class="card-title-4d"><i class="fas fa-graduation-cap"></i> Class X</h3>
-                <p><strong>School:</strong> K J +2 High School Amba Kala</p>
-                <p><strong>Board:</strong> Bihar School Examination Board (BSEB)</p>
-                <p><strong>Score:</strong> 70%</p>
-                <p><strong>Year:</strong> 2017</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title-4d" style="margin-top: 4rem;">Subjects & Languages</h2>
-        <div class="skills-orb-container">
-            <div class="skill-orb">Software Engineering</div>
-            <div class="skill-orb">Machine Learning</div>
-            <div class="skill-orb">Artificial Intelligence</div>
-            <div class="skill-orb">English</div>
-            <div class="skill-orb">Hindi</div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section class="section-4d performance-optimized" id="contact">
-        <h2 class="section-title-4d">Quantum Contact</h2>
-        <div class="contact-matrix">
-            <div class="matrix-cell">
-                <i class="fas fa-envelope fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>Email</h3>
-                <p>bittuk292021@gmail.com</p>
-            </div>
-            <div class="matrix-cell">
-                <i class="fas fa-phone fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>Phone</h3>
-                <p>+91 9608520740</p>
-            </div>
-            <div class="matrix-cell">
-                <i class="fas fa-map-marker-alt fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>Location</h3>
-                <p>New Delhi, India</p>
-            </div>
-            <div class="matrix-cell">
-                <i class="fab fa-linkedin fa-2x" style="color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>LinkedIn</h3>
-                <p>linkedin.com/in/rq-64757121a</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title-4d" style="margin-top: 4rem;">Hobbies & Interests</h2>
-        <div class="skills-orb-container">
-            <div class="skill-orb">
-                <i class="fas fa-chess"></i>
-                <span>Chess</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-baseball-ball"></i>
-                <span>Cricket</span>
-            </div>
-            <div class="skill-orb">
-                <i class="fas fa-table-tennis"></i>
-                <span>Badminton</span>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer-4d performance-optimized">
-        <div class="logo-quantum" style="font-size: 1.2rem; margin-bottom: 0.8rem;">Bittu Kumar</div>
-        <p>Quantum Developer | Computer Science Engineer | AI Enthusiast</p>
-        <p style="margin-top: 0.8rem; color: rgba(255, 255, 255, 0.6); font-size: 0.8rem;">
-            &copy; 2024 Quantum Portfolio. All dimensions reserved.
-        </p>
-    </footer>
+    </div>
 
-    <!-- PERFORMANCE OPTIMIZED SCRIPTS -->
-    <script>
-        // Mobile Navigation with debounce
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+    <!-- Import Three.js and create scene -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         
-        let navAnimationFrame;
-        hamburger.addEventListener('click', () => {
-            cancelAnimationFrame(navAnimationFrame);
-            navAnimationFrame = requestAnimationFrame(() => {
-                navLinks.classList.toggle('active');
+        // Setup
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050510);
+        
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(5, 2, 8);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        container.appendChild(renderer.domElement);
+        
+        // Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1.5;
+        controls.enableZoom = true;
+        controls.enablePan = false;
+        controls.maxPolarAngle = Math.PI / 2;
+        controls.minDistance = 3;
+        controls.maxDistance = 15;
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404060);
+        scene.add(ambientLight);
+        
+        const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        mainLight.position.set(2, 5, 3);
+        mainLight.castShadow = true;
+        mainLight.shadow.mapSize.width = 1024;
+        mainLight.shadow.mapSize.height = 1024;
+        const d = 10;
+        mainLight.shadow.camera.left = -d;
+        mainLight.shadow.camera.right = d;
+        mainLight.shadow.camera.top = d;
+        mainLight.shadow.camera.bottom = -d;
+        mainLight.shadow.camera.near = 1;
+        mainLight.shadow.camera.far = 15;
+        scene.add(mainLight);
+        
+        const fillLight = new THREE.PointLight(0x4466ff, 0.8);
+        fillLight.position.set(-3, 1, 2);
+        scene.add(fillLight);
+        
+        const backLight = new THREE.PointLight(0xff44aa, 0.5);
+        backLight.position.set(0, 2, -5);
+        scene.add(backLight);
+        
+        // Create a floating geometric centerpiece
+        const centerGeo = new THREE.IcosahedronGeometry(1.2, 2);
+        const centerMat = new THREE.MeshStandardMaterial({ 
+            color: 0x4a6eff,
+            emissive: 0x112244,
+            roughness: 0.2,
+            metalness: 0.7,
+            wireframe: false,
+            flatShading: false
+        });
+        const centerPiece = new THREE.Mesh(centerGeo, centerMat);
+        centerPiece.castShadow = true;
+        centerPiece.receiveShadow = true;
+        centerPiece.position.y = 1.5;
+        scene.add(centerPiece);
+        
+        // Add inner core
+        const coreGeo = new THREE.IcosahedronGeometry(0.5, 1);
+        const coreMat = new THREE.MeshStandardMaterial({ 
+            color: 0xffaa44,
+            emissive: 0x442200,
+            roughness: 0.1,
+            metalness: 0.3
+        });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        core.castShadow = true;
+        core.receiveShadow = true;
+        centerPiece.add(core);
+        
+        // Add floating rings
+        const ringGeo = new THREE.TorusGeometry(1.8, 0.05, 16, 100);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0x88aaff, emissive: 0x112244 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2;
+        ring.rotation.z = 0.3;
+        ring.position.y = 1.5;
+        ring.castShadow = true;
+        ring.receiveShadow = true;
+        scene.add(ring);
+        
+        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.03, 16, 100), 
+            new THREE.MeshStandardMaterial({ color: 0xff88aa, emissive: 0x221122 }));
+        ring2.rotation.x = 1.2;
+        ring2.rotation.y = 0.5;
+        ring2.position.y = 1.5;
+        ring2.castShadow = true;
+        ring2.receiveShadow = true;
+        scene.add(ring2);
+        
+        // Floating cubes around
+        const colors = [0xff4466, 0x44ff66, 0x4466ff, 0xffaa44, 0xaa44ff];
+        for (let i = 0; i < 12; i++) {
+            const size = 0.2 + Math.random() * 0.3;
+            const cubeGeo = new THREE.BoxGeometry(size, size, size);
+            const cubeMat = new THREE.MeshStandardMaterial({ 
+                color: colors[Math.floor(Math.random() * colors.length)],
+                emissive: 0x111122
             });
+            const cube = new THREE.Mesh(cubeGeo, cubeMat);
+            
+            const angle = (i / 12) * Math.PI * 2;
+            const radius = 3.2;
+            const height = 1 + Math.sin(angle * 3) * 1.2;
+            
+            cube.position.set(
+                Math.cos(angle) * radius,
+                height,
+                Math.sin(angle) * radius
+            );
+            
+            cube.castShadow = true;
+            cube.receiveShadow = true;
+            scene.add(cube);
+        }
+        
+        // Particle system
+        const particleCount = 2000;
+        const particleGeo = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            const r = 5 + Math.random() * 8;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            
+            particlePositions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+            particlePositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+            particlePositions[i*3+2] = r * Math.cos(phi);
+        }
+        
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        const particleMat = new THREE.PointsMaterial({ 
+            color: 0x88aaff,
+            size: 0.08,
+            transparent: true,
+            blending: THREE.AdditiveBlending
         });
+        const particles = new THREE.Points(particleGeo, particleMat);
+        scene.add(particles);
         
-        // Close menu on link click
-        document.querySelectorAll('.nav-link-4d').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+        // Add subtle grid floor
+        const gridHelper = new THREE.GridHelper(15, 20, 0x4466ff, 0x224488);
+        gridHelper.position.y = -0.2;
+        scene.add(gridHelper);
         
-        // Photo loading with performance optimization
-        function loadQuantumPhoto() {
-            const hologramContainer = document.getElementById('hologramContainer');
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
             
-            const photoAttempts = [
-                'raj-photo.jpg', 'raj-photo.jpeg', 'raj-photo.png',
-                'raj.jpg', 'raj.jpeg', 'raj.png',
-                'profile.jpg', 'profile.jpeg', 'profile.png',
-                'photo.jpg', 'photo.jpeg', 'photo.png',
-                'bittu.jpg', 'bittu.jpeg', 'bittu.png',
-                'BITTU.jpg', 'BITTU.jpeg', 'BITTU.png'
-            ];
+            // Rotate centerpiece
+            centerPiece.rotation.x += 0.003;
+            centerPiece.rotation.y += 0.005;
             
-            let photoLoaded = false;
-            let testCount = 0;
+            // Rotate rings
+            ring.rotation.y += 0.002;
+            ring.rotation.x += 0.001;
+            ring2.rotation.y -= 0.0015;
+            ring2.rotation.z += 0.001;
             
-            function testImage(url) {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => resolve({exists: true, url});
-                    img.onerror = () => resolve({exists: false, url});
-                    img.src = url;
-                });
-            }
+            // Rotate particles
+            particles.rotation.y += 0.0002;
             
-            async function tryPhotos() {
-                for (const photoName of photoAttempts) {
-                    if (photoLoaded) break;
-                    
-                    const result = await testImage(photoName);
-                    testCount++;
-                    
-                    if (result.exists && !photoLoaded) {
-                        photoLoaded = true;
-                        const img = document.createElement('img');
-                        img.src = result.url;
-                        img.alt = 'Bittu Kumar';
-                        img.className = 'my-hologram-photo';
-                        hologramContainer.appendChild(img);
-                        
-                        // Use requestIdleCallback for non-critical updates
-                        if ('requestIdleCallback' in window) {
-                            requestIdleCallback(() => {
-                                hologramContainer.style.background = 'rgba(0, 0, 0, 0.1)';
-                            });
-                        }
-                        break;
-                    }
-                }
-                
-                // Show placeholder if no photo found
-                if (!photoLoaded && testCount === photoAttempts.length) {
-                    if ('requestIdleCallback' in window) {
-                        requestIdleCallback(() => {
-                            hologramContainer.innerHTML = `
-                                <div style="color: var(--primary); text-align: center; padding: 1.5rem;">
-                                    <i class="fas fa-user-astronaut" style="font-size: 3rem; margin-bottom: 0.8rem;"></i>
-                                    <h3 style="font-size: 1.2rem;">BITTU KUMAR(RAJ)</h3>
-                                </div>
-                            `;
-                        });
-                    }
-                }
-            }
-            
-            tryPhotos();
+            controls.update();
+            renderer.render(scene, camera);
         }
         
-        // Load photo when page is idle
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(loadQuantumPhoto);
-        } else {
-            window.addEventListener('load', loadQuantumPhoto);
+        animate();
+        
+        // Handle resize
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         }
-        
-        // OPTIMIZED Quantum Canvas Animation
-        const canvas = document.getElementById('quantum-canvas');
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
-        
-        function resizeCanvas() {
-            const dpr = window.devicePixelRatio || 1;
-            const rect = canvas.getBoundingClientRect();
-            
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            
-            ctx.scale(dpr, dpr);
-            
-            canvas.style.width = `${rect.width}px`;
-            canvas.style.height = `${rect.height}px`;
-        }
-        
-        const resizeObserver = new ResizeObserver(() => {
-            cancelAnimationFrame(animationFrameId);
-            resizeCanvas();
-            initParticles();
-            animateQuantum();
-        });
-        
-        resizeObserver.observe(canvas);
-        
-        // Optimized particles
-        let particles = [];
-        const particleCount = Math.min(100, Math.floor(window.innerWidth * window.innerHeight / 20000));
-        
-        class QuantumParticle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 1.5;
-                this.speedY = (Math.random() - 0.5) * 1.5;
-                this.color = Math.random() > 0.5 ? '#00f3ff' : '#9d00ff';
-                this.opacity = Math.random() * 0.4 + 0.1;
-                this.pulseSpeed = Math.random() * 0.01 + 0.005;
-                this.pulseOffset = Math.random() * Math.PI * 2;
-            }
-            
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                // Wrap around edges
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
-                ctx.fill();
-            }
-        }
-        
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new QuantumParticle());
-            }
-        }
-        
-        // Throttled animation
-        let lastTime = 0;
-        const fps = 30;
-        const interval = 1000 / fps;
-        
-        function animateQuantum(timestamp) {
-            if (timestamp - lastTime >= interval) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                }
-                
-                lastTime = timestamp;
-            }
-            
-            animationFrameId = requestAnimationFrame(animateQuantum);
-        }
-        
-        // Start animations
-        initParticles();
-        animateQuantum();
-        
-        // Optimized scroll handling
-        const timelineItems = document.querySelectorAll('.timeline-item-4d');
-        let ticking = false;
-        
-        function checkTimelineVisibility() {
-            if (ticking) return;
-            
-            ticking = true;
-            
-            requestAnimationFrame(() => {
-                timelineItems.forEach(item => {
-                    const rect = item.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.85) {
-                        item.classList.add('visible');
-                    }
-                });
-                
-                ticking = false;
-            });
-        }
-        
-        // Use IntersectionObserver for better performance
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            timelineItems.forEach(item => observer.observe(item));
-        } else {
-            window.addEventListener('scroll', checkTimelineVisibility, { passive: true });
-            checkTimelineVisibility();
-        }
-        
-        // Optimized smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition - 80;
-                    const duration = 800;
-                    let startTime = null;
-                    
-                    function animation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const run = ease(timeElapsed, startPosition, distance, duration);
-                        window.scrollTo(0, run);
-                        if (timeElapsed < duration) requestAnimationFrame(animation);
-                    }
-                    
-                    function ease(t, b, c, d) {
-                        t /= d / 2;
-                        if (t < 1) return c / 2 * t * t + b;
-                        t--;
-                        return -c / 2 * (t * (t - 2) - 1) + b;
-                    }
-                    
-                    requestAnimationFrame(animation);
-                }
-            });
-        });
-        
-        // Throttled hologram effect
-        let lastMove = 0;
-        const hologram = document.querySelector('.photo-hologram');
-        
-        if (hologram && 'requestAnimationFrame' in window) {
-            document.addEventListener('mousemove', (e) => {
-                const now = Date.now();
-                if (now - lastMove < 16) return; // ~60fps
-                
-                lastMove = now;
-                
-                requestAnimationFrame(() => {
-                    const x = (window.innerWidth - e.clientX * 2) / 100;
-                    const y = (window.innerHeight - e.clientY * 2) / 100;
-                    
-                    hologram.style.transform = `translate(-50%, -50%) rotateX(${y}deg) rotateY(${x}deg)`;
-                });
-            }, { passive: true });
-        }
-        
-        // Optimized typing effect
-        const typewriterText = document.querySelector('.typewriter');
-        if (typewriterText) {
-            const originalText = typewriterText.textContent;
-            typewriterText.textContent = '';
-            let i = 0;
-            
-            function typeWriter() {
-                if (i < originalText.length) {
-                    typewriterText.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 80); // Faster typing
-                }
-            }
-            
-            // Start typing when page is loaded
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => setTimeout(typeWriter, 500));
-            } else {
-                setTimeout(typeWriter, 500);
-            }
-        }
-        
-        // Clean up on page unload
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(animationFrameId);
-            resizeObserver.disconnect();
-        });
     </script>
 </body>
 </html>
