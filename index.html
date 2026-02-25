@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Portfolio</title>
+    <title>Alex Raj - 3D Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -30,27 +30,112 @@
             z-index: 2;
             color: white;
             padding: 2rem;
-            max-width: 600px;
+            max-width: 700px;
             pointer-events: none;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         h1 {
             font-size: 4rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             animation: fadeInUp 1s ease;
+            color: #4a6eff;
         }
         
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
+            animation: fadeInUp 1s ease 0.1s both;
+            color: #88aaff;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(74, 110, 255, 0.3);
+            border: 1px solid #4a6eff;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .achievement-badge {
+            background: rgba(255, 170, 68, 0.2);
+            border-color: #ffaa44;
+            color: #ffaa44;
+        }
+        
+        .section {
+            margin: 1.5rem 0;
             animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #ffaa44;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .skill-tag {
+            background: rgba(74, 110, 255, 0.2);
+            border: 1px solid #4a6eff;
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-item {
+            margin-bottom: 1rem;
+            border-left: 3px solid #4a6eff;
+            padding-left: 1rem;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            color: #88aaff;
+            font-size: 1.1rem;
+        }
+        
+        .project-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0.3rem 0;
+        }
+        
+        .project-link {
+            color: #ffaa44;
+            text-decoration: none;
+            font-size: 0.8rem;
+            pointer-events: auto;
+            word-break: break-all;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
         }
         
         .social-links {
             display: flex;
             gap: 1rem;
+            margin-top: 2rem;
             animation: fadeInUp 1s ease 0.4s both;
             pointer-events: auto;
         }
@@ -58,18 +143,44 @@
         .social-links a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             border: 1px solid rgba(255,255,255,0.3);
             border-radius: 30px;
             transition: all 0.3s;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(5px);
+            font-weight: 500;
         }
         
         .social-links a:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: white;
+            background: #4a6eff;
+            border-color: #4a6eff;
             transform: translateY(-2px);
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        
+        .edu-item {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .edu-year {
+            color: #ffaa44;
+            font-weight: bold;
+        }
+        
+        .edu-score {
+            color: #88aaff;
         }
         
         @keyframes fadeInUp {
@@ -85,7 +196,15 @@
         
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            .content { padding: 1rem; }
+            .content { 
+                padding: 1rem;
+                background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+                justify-content: flex-start;
+                padding-top: 4rem;
+            }
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -93,12 +212,99 @@
     <div id="canvas-container"></div>
     
     <div class="content">
-        <h1>Alex Chen</h1>
-        <p>Creative Developer & 3D Artist crafting immersive digital experiences. <br>Specializing in WebGL, Three.js, and interactive design.</p>
+        <h1>Alex Raj</h1>
+        <div class="subtitle">Software Developer | AI/ML Enthusiast</div>
+        
+        <!-- Achievements Badges -->
+        <div style="margin-bottom: 1rem;">
+            <span class="badge achievement-badge">🏆 GATE 2025 Qualified</span>
+            <span class="badge achievement-badge">📚 Bihar STET 2025 Qualified</span>
+        </div>
+        
+        <!-- Education Section -->
+        <div class="section">
+            <h2>📖 Education</h2>
+            <div class="education-grid">
+                <div class="edu-item">
+                    <div><strong>B.Tech CS</strong></div>
+                    <div>Galgotias University</div>
+                    <div class="edu-score">71.6%</div>
+                    <div class="edu-year">2024</div>
+                </div>
+                <div class="edu-item">
+                    <div><strong>Class XII</strong></div>
+                    <div>KJ +2 High School</div>
+                    <div class="edu-score">78.2%</div>
+                    <div class="edu-year">2019</div>
+                </div>
+                <div class="edu-item">
+                    <div><strong>Class X</strong></div>
+                    <div>KJ +2 High School</div>
+                    <div class="edu-score">70%</div>
+                    <div class="edu-year">2017</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2>💻 Technical Proficiency</h2>
+            <div class="skills">
+                <span class="skill-tag">C/C++</span>
+                <span class="skill-tag">Data Structures</span>
+                <span class="skill-tag">Algorithms</span>
+                <span class="skill-tag">Operating Systems</span>
+                <span class="skill-tag">DBMS</span>
+                <span class="skill-tag">Computer Networks</span>
+                <span class="skill-tag">Software Engineering</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">AI</span>
+                <span class="skill-tag">AWS Cloud</span>
+                <span class="skill-tag">Networking</span>
+            </div>
+        </div>
+        
+        <!-- Projects -->
+        <div class="section">
+            <h2>🚀 Featured Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-title">📱 WhatsApp Chat Analyzer</div>
+                <div class="project-desc">ML-Powered Relationship & Sentiment Intelligence Platform with 94% accuracy</div>
+                <a href="https://huggingface.co/spaces/alex292021/whatsapp-chat-Analyzer" target="_blank" class="project-link">🔗 Live Demo</a>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">🎯 GATE Rank Predictor</div>
+                <div class="project-desc">Web app using previous years' data to estimate rank, IIT admissions & PSU eligibility</div>
+                <a href="https://rai2920.github.io/Gate-Rank-Predictor/" target="_blank" class="project-link">🔗 Live Demo</a>
+            </div>
+        </div>
+        
+        <!-- Certifications & Experience -->
+        <div class="section">
+            <h2>📜 Certifications & Experience</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div class="badge">AWS Cloud (AICTE)</div>
+                <div class="badge">CCNAv7: Intro to Networks (Cisco)</div>
+                <div class="badge">Juniper Networks (AICTE)</div>
+            </div>
+            <div style="margin-top: 0.8rem; font-size: 0.9rem; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 8px; backdrop-filter: blur(5px);">
+                <strong>AWS Cloud Virtual Internship</strong> - AICTE & Ministry of Housing and Urban Affairs (Eduskills)
+            </div>
+        </div>
+        
+        <!-- Languages & Hobbies -->
+        <div style="display: flex; gap: 2rem; margin-top: 1rem; font-size: 0.9rem;">
+            <div><strong>Languages:</strong> English, Hindi</div>
+            <div><strong>Hobbies:</strong> ♟️ Chess | 🏏 Cricket | 🏸 Badminton</div>
+        </div>
+        
+        <!-- Contact/Social Links -->
         <div class="social-links">
             <a href="#">GitHub</a>
             <a href="#">LinkedIn</a>
-            <a href="#">Behance</a>
+            <a href="#">Portfolio</a>
             <a href="#">Contact</a>
         </div>
     </div>
@@ -137,7 +343,7 @@
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 1.5;
+        controls.autoRotateSpeed = 1.0;
         controls.enableZoom = true;
         controls.enablePan = false;
         controls.maxPolarAngle = Math.PI / 2;
@@ -153,13 +359,6 @@
         mainLight.castShadow = true;
         mainLight.shadow.mapSize.width = 1024;
         mainLight.shadow.mapSize.height = 1024;
-        const d = 10;
-        mainLight.shadow.camera.left = -d;
-        mainLight.shadow.camera.right = d;
-        mainLight.shadow.camera.top = d;
-        mainLight.shadow.camera.bottom = -d;
-        mainLight.shadow.camera.near = 1;
-        mainLight.shadow.camera.far = 15;
         scene.add(mainLight);
         
         const fillLight = new THREE.PointLight(0x4466ff, 0.8);
@@ -170,59 +369,85 @@
         backLight.position.set(0, 2, -5);
         scene.add(backLight);
         
-        // Create a floating geometric centerpiece
-        const centerGeo = new THREE.IcosahedronGeometry(1.2, 2);
-        const centerMat = new THREE.MeshStandardMaterial({ 
+        // Create central AI/ML themed object (neural network inspired)
+        const group = new THREE.Group();
+        
+        // Core sphere
+        const coreGeo = new THREE.IcosahedronGeometry(1.2, 2);
+        const coreMat = new THREE.MeshStandardMaterial({ 
             color: 0x4a6eff,
             emissive: 0x112244,
             roughness: 0.2,
             metalness: 0.7,
-            wireframe: false,
-            flatShading: false
-        });
-        const centerPiece = new THREE.Mesh(centerGeo, centerMat);
-        centerPiece.castShadow = true;
-        centerPiece.receiveShadow = true;
-        centerPiece.position.y = 1.5;
-        scene.add(centerPiece);
-        
-        // Add inner core
-        const coreGeo = new THREE.IcosahedronGeometry(0.5, 1);
-        const coreMat = new THREE.MeshStandardMaterial({ 
-            color: 0xffaa44,
-            emissive: 0x442200,
-            roughness: 0.1,
-            metalness: 0.3
+            wireframe: true
         });
         const core = new THREE.Mesh(coreGeo, coreMat);
         core.castShadow = true;
         core.receiveShadow = true;
-        centerPiece.add(core);
+        group.add(core);
         
-        // Add floating rings
-        const ringGeo = new THREE.TorusGeometry(1.8, 0.05, 16, 100);
-        const ringMat = new THREE.MeshStandardMaterial({ color: 0x88aaff, emissive: 0x112244 });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.rotation.x = Math.PI / 2;
-        ring.rotation.z = 0.3;
-        ring.position.y = 1.5;
-        ring.castShadow = true;
-        ring.receiveShadow = true;
-        scene.add(ring);
+        // Inner sphere
+        const innerGeo = new THREE.SphereGeometry(0.8, 32, 32);
+        const innerMat = new THREE.MeshStandardMaterial({ 
+            color: 0x88aaff,
+            emissive: 0x112244,
+            transparent: true,
+            opacity: 0.3,
+            wireframe: true
+        });
+        const inner = new THREE.Mesh(innerGeo, innerMat);
+        group.add(inner);
         
-        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.03, 16, 100), 
-            new THREE.MeshStandardMaterial({ color: 0xff88aa, emissive: 0x221122 }));
-        ring2.rotation.x = 1.2;
-        ring2.rotation.y = 0.5;
-        ring2.position.y = 1.5;
-        ring2.castShadow = true;
-        ring2.receiveShadow = true;
-        scene.add(ring2);
+        // Floating orbs (representing data points)
+        const orbCount = 8;
+        for (let i = 0; i < orbCount; i++) {
+            const angle = (i / orbCount) * Math.PI * 2;
+            const radius = 2.2;
+            const y = Math.sin(angle * 3) * 1;
+            
+            const orbGeo = new THREE.SphereGeometry(0.15, 16, 16);
+            const orbMat = new THREE.MeshStandardMaterial({ 
+                color: 0xffaa44,
+                emissive: 0x442200
+            });
+            const orb = new THREE.Mesh(orbGeo, orbMat);
+            orb.position.set(
+                Math.cos(angle) * radius,
+                y,
+                Math.sin(angle) * radius
+            );
+            orb.castShadow = true;
+            orb.receiveShadow = true;
+            group.add(orb);
+            
+            // Connect orbs with lines (neural network connections)
+            if (i > 0) {
+                const points = [];
+                points.push(new THREE.Vector3(
+                    Math.cos(angle) * radius,
+                    y,
+                    Math.sin(angle) * radius
+                ));
+                points.push(new THREE.Vector3(
+                    Math.cos(angle - 0.8) * radius,
+                    Math.sin((angle - 0.8) * 3) * 1,
+                    Math.sin(angle - 0.8) * radius
+                ));
+                
+                const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                const lineMat = new THREE.LineBasicMaterial({ color: 0x4466ff, transparent: true, opacity: 0.3 });
+                const line = new THREE.Line(lineGeo, lineMat);
+                group.add(line);
+            }
+        }
         
-        // Floating cubes around
-        const colors = [0xff4466, 0x44ff66, 0x4466ff, 0xffaa44, 0xaa44ff];
+        group.position.y = 1.5;
+        scene.add(group);
+        
+        // Floating cubes (representing projects/achievements)
+        const colors = [0x4a6eff, 0xff4466, 0x44ff66, 0xffaa44, 0xaa44ff];
         for (let i = 0; i < 12; i++) {
-            const size = 0.2 + Math.random() * 0.3;
+            const size = 0.15 + Math.random() * 0.2;
             const cubeGeo = new THREE.BoxGeometry(size, size, size);
             const cubeMat = new THREE.MeshStandardMaterial({ 
                 color: colors[Math.floor(Math.random() * colors.length)],
@@ -231,8 +456,8 @@
             const cube = new THREE.Mesh(cubeGeo, cubeMat);
             
             const angle = (i / 12) * Math.PI * 2;
-            const radius = 3.2;
-            const height = 1 + Math.sin(angle * 3) * 1.2;
+            const radius = 3.5;
+            const height = 1 + Math.sin(angle * 4) * 1.5;
             
             cube.position.set(
                 Math.cos(angle) * radius,
@@ -245,30 +470,63 @@
             scene.add(cube);
         }
         
-        // Particle system
+        // Particle system (representing data flow)
         const particleCount = 2000;
         const particleGeo = new THREE.BufferGeometry();
         const particlePositions = new Float32Array(particleCount * 3);
+        const particleColors = new Float32Array(particleCount * 3);
         
         for (let i = 0; i < particleCount; i++) {
-            const r = 5 + Math.random() * 8;
+            const r = 4 + Math.random() * 8;
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos(2 * Math.random() - 1);
             
             particlePositions[i*3] = r * Math.sin(phi) * Math.cos(theta);
             particlePositions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
             particlePositions[i*3+2] = r * Math.cos(phi);
+            
+            // Color based on position
+            const color = new THREE.Color().setHSL(
+                0.6 + (Math.sin(i) * 0.2),
+                0.8,
+                0.5
+            );
+            particleColors[i*3] = color.r;
+            particleColors[i*3+1] = color.g;
+            particleColors[i*3+2] = color.b;
         }
         
         particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+        
         const particleMat = new THREE.PointsMaterial({ 
-            color: 0x88aaff,
-            size: 0.08,
+            size: 0.1,
+            vertexColors: true,
             transparent: true,
             blending: THREE.AdditiveBlending
         });
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
+        
+        // Add floating GATE/Achievement symbols
+        const gateSymbols = ['🏆', '📚', '💻', '🤖', '🎯'];
+        gateSymbols.forEach((symbol, i) => {
+            // Create text sprite (simplified with small cubes for now)
+            const geo = new THREE.TetrahedronGeometry(0.2);
+            const mat = new THREE.MeshStandardMaterial({ 
+                color: 0xffaa44,
+                emissive: 0x442200
+            });
+            const mesh = new THREE.Mesh(geo, mat);
+            
+            const angle = (i / gateSymbols.length) * Math.PI * 2;
+            mesh.position.set(
+                Math.cos(angle) * 2.8,
+                2.5 + Math.sin(angle * 2) * 0.5,
+                Math.sin(angle) * 2.8
+            );
+            scene.add(mesh);
+        });
         
         // Add subtle grid floor
         const gridHelper = new THREE.GridHelper(15, 20, 0x4466ff, 0x224488);
@@ -279,15 +537,9 @@
         function animate() {
             requestAnimationFrame(animate);
             
-            // Rotate centerpiece
-            centerPiece.rotation.x += 0.003;
-            centerPiece.rotation.y += 0.005;
-            
-            // Rotate rings
-            ring.rotation.y += 0.002;
-            ring.rotation.x += 0.001;
-            ring2.rotation.y -= 0.0015;
-            ring2.rotation.z += 0.001;
+            // Rotate central group
+            group.rotation.x += 0.002;
+            group.rotation.y += 0.003;
             
             // Rotate particles
             particles.rotation.y += 0.0002;
